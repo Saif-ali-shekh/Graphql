@@ -29,3 +29,4 @@ urlpatterns = [
 urlpatterns+=staticfiles_urlpatterns()
 
 
+# postgres://${db.testdb_802f_user}:${db.2WjIfBgttNVoJNUMBeKUVUWmy5R6imsV}@${db.dpg-cpl7ummd3nmc73crje10-a}:${db.5432}/${db.testdb_802f}

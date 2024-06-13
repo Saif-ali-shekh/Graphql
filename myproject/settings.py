@@ -92,19 +92,12 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 #         'ENGINE': 'django.db.backends.sqlite3',
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
+
 # }
 
-
-database_url = os.environ.get('DATABASE_URL')
-print(f"DATABASE_URL: {database_url}")
-
-# DATABASES = {
-#     'default': dj_database_url.parse(database_url)
-# }
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -146,3 +139,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+# $env:DATABASE_URL = 'postgres://testdb_802f_user:2WjIfBgttNVoJNUMBeKUVUWmy5R6imsV@dpg-cpl7ummd3nmc73crje10-a.oregon-postgres.render.com/testdb_802f'
+#for print: echo $env:DATABASE_URL
+
+
+
