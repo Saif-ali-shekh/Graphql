@@ -120,7 +120,7 @@ class DeleteCustomUser(graphene.Mutation):
         except CustomUser.DoesNotExist:
             return DeleteCustomUser(success=False)
 
-
+#for adding and changes data
 class Mutation(graphene.ObjectType):
     create_user = CreateCustomUser.Field()  ###USE RESPONSE DATA IN WEB SCHEMA 
     #whose fiels define in object type . only whose field show in response , but we can do update also
