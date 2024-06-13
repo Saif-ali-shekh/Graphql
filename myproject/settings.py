@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myapp',
     'graphene_django',
+    'rest_framework',
+    'rest_framework_simplejwt',
+    
 
 ]
 GRAPHENE = {
@@ -68,7 +71,7 @@ ROOT_URLCONF = 'myproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR,'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -141,7 +144,14 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-
+REST_FRAMEWORK = {
+    
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+    
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+    
+}
 # $env:DATABASE_URL = 'postgres://testdb_802f_user:2WjIfBgttNVoJNUMBeKUVUWmy5R6imsV@dpg-cpl7ummd3nmc73crje10-a.oregon-postgres.render.com/testdb_802f'
 #for print: echo $env:DATABASE_URL
 
