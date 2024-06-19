@@ -3,6 +3,7 @@
 import graphene
 from graphene_django import DjangoObjectType
 from .models import *
+from graphql import GraphQLError
 
 class UserType(DjangoObjectType):
     class Meta:
@@ -39,9 +40,20 @@ class Query(graphene.ObjectType):
     def resolve_UserTypeBy_id(self, request,User_id):
         try:
             return CustomUser.objects.get(id=User_id)
+        # except CustomUser.DoesNotExist:
+        #     return None
         except CustomUser.DoesNotExist:
-            return None
-        
+            raise GraphQLError(f"User with id {id} does not exist")
+    def resolve_author_by_id(self, info, id):
+        try:
+            return Author.objects.get(pk=id)
+        except Author.DoesNotExist:
+            raise GraphQLError(f"Author with id {id} does not exist")  
+    def resolve_book_by_id(self, info, id):
+        try:
+            return Book.objects.get(pk=id)
+        except Book.DoesNotExist:
+            raise GraphQLError(f"Book with id {id} does not exist")
         
 class CreateCustomUser(graphene.Mutation):
     class Arguments:
